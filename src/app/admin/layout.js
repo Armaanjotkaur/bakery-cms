@@ -29,6 +29,9 @@ export default async function AdminLayout({ children }) {
         <Link href="/admin/categories" className="text-gray-600 hover:text-black">
           Categories
         </Link>
+        <Link href="/admin/submissions" className="text-gray-600 hover:text-black">
+          Submissions
+        </Link>
       </nav>
       {children}
     </div>
