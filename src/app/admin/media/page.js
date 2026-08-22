@@ -19,6 +19,7 @@ export default function MediaLibraryPage() {
   const [type, setType] = useState("");
   const [category, setCategory] = useState("");
   const [sort, setSort] = useState("date");
+  const [uploadCategory, setUploadCategory] = useState("");
   const [page, setPage] = useState(1);
   const [isDragging, setIsDragging] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -60,6 +61,7 @@ export default function MediaLibraryPage() {
     try {
       const formData = new FormData();
       formData.append("file", file);
+      if (uploadCategory) formData.append("category", uploadCategory);
       const res = await fetch("/api/media", { method: "POST", body: formData });
       const json = await res.json();
       if (!json.success) {
@@ -102,6 +104,20 @@ export default function MediaLibraryPage() {
   function openReplace(id) {
     replaceTargetId.current = id;
     replaceInputRef.current?.click();
+  }
+
+  async function handleSetCategory(id, categoryId) {
+    const res = await fetch(`/api/media/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ category: categoryId || null }),
+    });
+    const json = await res.json();
+    if (json.success) {
+      loadMedia();
+    } else {
+      alert(json.error || "Update failed");
+    }
   }
 
   async function handleReplaceSelect(e) {
@@ -150,6 +166,24 @@ export default function MediaLibraryPage() {
           Browse files
         </button>
         <p className="text-stone-400 text-xs mt-2">JPG, PNG, WEBP, PDF, DOC, DOCX — up to 5 MB</p>
+
+        <label className="inline-flex items-center gap-2 mt-4 text-sm text-stone-600">
+          Upload to category:
+          <select
+            value={uploadCategory}
+            onChange={(e) => setUploadCategory(e.target.value)}
+            onClick={(e) => e.stopPropagation()}
+            className="border border-rose-200 rounded-md px-2 py-1 text-stone-900"
+          >
+            <option value="">No category</option>
+            {categories.map((c) => (
+              <option key={c._id} value={c._id}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+        </label>
+
         <input
           ref={fileInputRef}
           type="file"
@@ -227,7 +261,18 @@ export default function MediaLibraryPage() {
                 {humanFileSize(item.size)} · {item.fileType}
               </p>
               <p className="text-stone-500">{new Date(item.createdAt).toLocaleDateString()}</p>
-              {item.category?.name && <p className="text-stone-500">{item.category.name}</p>}
+              <select
+                value={item.category?._id || ""}
+                onChange={(e) => handleSetCategory(item._id, e.target.value)}
+                className="w-full border border-rose-200 rounded px-1.5 py-1 text-xs text-stone-700 mt-1"
+              >
+                <option value="">No category</option>
+                {categories.map((c) => (
+                  <option key={c._id} value={c._id}>
+                    {c.name}
+                  </option>
+                ))}
+              </select>
               {item.usedIn?.length > 0 && (
                 <p className="text-stone-400 text-xs">Used in {item.usedIn.length} place(s)</p>
               )}

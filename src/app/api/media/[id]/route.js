@@ -6,6 +6,27 @@ import cloudinary, { uploadBuffer } from "@/lib/cloudinary";
 import { validateUploadedFile } from "@/lib/media";
 import Media from "@/models/Media";
 
+// Category-only update: lets an already-uploaded file be filed into a
+// category without re-uploading (e.g. fixing files that predate a category).
+export async function PATCH(request, { params }) {
+  const { unauthorized } = await requireAdmin();
+  if (unauthorized) return unauthorized;
+
+  const { id } = await params;
+  const { category } = await request.json();
+
+  await dbConnect();
+
+  const media = await Media.findByIdAndUpdate(id, { category: category || undefined }, { new: true }).populate(
+    "category"
+  );
+  if (!media) {
+    return NextResponse.json({ success: false, error: "Not found" }, { status: 404 });
+  }
+
+  return NextResponse.json({ success: true, data: media });
+}
+
 export async function DELETE(request, { params }) {
   const { unauthorized } = await requireAdmin();
   if (unauthorized) return unauthorized;
