@@ -1,16 +1,14 @@
 import crypto from "crypto";
 import { NextResponse } from "next/server";
 import { dbConnect } from "@/lib/db";
-import { getSession } from "@/lib/auth";
+import { requireAdmin } from "@/lib/api";
 import { uploadBuffer } from "@/lib/cloudinary";
 import { validateUploadedFile } from "@/lib/media";
 import Media from "@/models/Media";
 
 export async function POST(request) {
-  const session = await getSession();
-  if (!session) {
-    return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
-  }
+  const { unauthorized } = await requireAdmin();
+  if (unauthorized) return unauthorized;
 
   const formData = await request.formData();
   const file = formData.get("file");
@@ -55,10 +53,8 @@ export async function POST(request) {
 }
 
 export async function GET(request) {
-  const session = await getSession();
-  if (!session) {
-    return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
-  }
+  const { unauthorized } = await requireAdmin();
+  if (unauthorized) return unauthorized;
 
   await dbConnect();
 

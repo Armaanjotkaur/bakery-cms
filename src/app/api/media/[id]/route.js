@@ -1,16 +1,14 @@
 import crypto from "crypto";
 import { NextResponse } from "next/server";
 import { dbConnect } from "@/lib/db";
-import { getSession } from "@/lib/auth";
+import { requireAdmin } from "@/lib/api";
 import cloudinary, { uploadBuffer } from "@/lib/cloudinary";
 import { validateUploadedFile } from "@/lib/media";
 import Media from "@/models/Media";
 
 export async function DELETE(request, { params }) {
-  const session = await getSession();
-  if (!session) {
-    return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
-  }
+  const { unauthorized } = await requireAdmin();
+  if (unauthorized) return unauthorized;
 
   const { id } = await params;
   await dbConnect();
@@ -29,10 +27,8 @@ export async function DELETE(request, { params }) {
 // Replace: uploads the new file, swaps the Cloudinary asset, and updates the
 // same Media doc in place so anything referencing this _id keeps working.
 export async function PUT(request, { params }) {
-  const session = await getSession();
-  if (!session) {
-    return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
-  }
+  const { unauthorized } = await requireAdmin();
+  if (unauthorized) return unauthorized;
 
   const { id } = await params;
   await dbConnect();

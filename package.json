@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@kartikgangil/watchman_js": "^2.1.0",
+    "@tiptap/react": "^3.30.2",
+    "@tiptap/starter-kit": "^3.30.2",
     "cloudinary": "^2.10.1",
     "mongoose": "^9.9.3",
     "next": "16.3.1",
@@ -18,6 +20,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@tailwindcss/typography": "^0.5.20",
     "eslint": "^9",
     "eslint-config-next": "16.3.1",
     "tailwindcss": "^4"

@@ -17,6 +17,18 @@ export default async function AdminLayout({ children }) {
         <Link href="/admin/media" className="text-gray-600 hover:text-black">
           Media Library
         </Link>
+        <Link href="/admin/posts" className="text-gray-600 hover:text-black">
+          Posts
+        </Link>
+        <Link href="/admin/services" className="text-gray-600 hover:text-black">
+          Services
+        </Link>
+        <Link href="/admin/pages" className="text-gray-600 hover:text-black">
+          Pages
+        </Link>
+        <Link href="/admin/categories" className="text-gray-600 hover:text-black">
+          Categories
+        </Link>
       </nav>
       {children}
     </div>

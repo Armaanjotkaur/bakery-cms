@@ -1,14 +1,12 @@
 import { NextResponse } from "next/server";
 import { dbConnect } from "@/lib/db";
-import { getSession } from "@/lib/auth";
-import { slugify } from "@/lib/slugify";
+import { requireAdmin } from "@/lib/api";
+import { generateUniqueSlug } from "@/lib/uniqueSlug";
 import Category from "@/models/Category";
 
 export async function GET(request) {
-  const session = await getSession();
-  if (!session) {
-    return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
-  }
+  const { unauthorized } = await requireAdmin();
+  if (unauthorized) return unauthorized;
 
   await dbConnect();
   const type = request.nextUrl.searchParams.get("type");
@@ -19,10 +17,8 @@ export async function GET(request) {
 }
 
 export async function POST(request) {
-  const session = await getSession();
-  if (!session) {
-    return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
-  }
+  const { unauthorized } = await requireAdmin();
+  if (unauthorized) return unauthorized;
 
   const { name, type } = await request.json();
   if (!name || !type) {
@@ -30,7 +26,8 @@ export async function POST(request) {
   }
 
   await dbConnect();
-  const category = await Category.create({ name, slug: slugify(name), type });
+  const slug = await generateUniqueSlug(Category, name);
+  const category = await Category.create({ name, slug, type });
 
   return NextResponse.json({ success: true, data: category }, { status: 201 });
 }
