@@ -125,7 +125,7 @@ export default function MediaLibraryPage() {
 
   return (
     <main className="p-8 max-w-6xl mx-auto">
-      <h1 className="text-2xl font-semibold mb-6">Media Library</h1>
+      <h1 className="text-2xl font-semibold mb-6 text-stone-900">Media Library</h1>
 
       <div
         onDragOver={(e) => {
@@ -135,21 +135,21 @@ export default function MediaLibraryPage() {
         onDragLeave={() => setIsDragging(false)}
         onDrop={handleDrop}
         className={`border-2 border-dashed rounded-lg p-10 text-center mb-6 transition ${
-          isDragging ? "border-black bg-gray-50" : "border-gray-300"
+          isDragging ? "border-rose-500 bg-rose-50" : "border-rose-200"
         }`}
       >
-        <p className="text-gray-600 mb-2">
+        <p className="text-stone-600 mb-2">
           {uploading ? "Uploading..." : "Drag and drop a file here, or"}
         </p>
         <button
           type="button"
           onClick={() => fileInputRef.current?.click()}
           disabled={uploading}
-          className="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition disabled:opacity-50"
+          className="bg-rose-600 text-white px-4 py-2 rounded-md hover:bg-rose-700 transition disabled:opacity-50"
         >
           Browse files
         </button>
-        <p className="text-gray-400 text-xs mt-2">JPG, PNG, WEBP, PDF, DOC, DOCX — up to 5 MB</p>
+        <p className="text-stone-400 text-xs mt-2">JPG, PNG, WEBP, PDF, DOC, DOCX — up to 5 MB</p>
         <input
           ref={fileInputRef}
           type="file"
@@ -170,7 +170,7 @@ export default function MediaLibraryPage() {
             setSearch(e.target.value);
             setPage(1);
           }}
-          className="border border-gray-300 rounded-md px-3 py-2 flex-1 min-w-[200px]"
+          className="border border-rose-200 rounded-md px-3 py-2 flex-1 min-w-[200px] text-stone-900 focus:outline-none focus:ring-2 focus:ring-rose-400"
         />
         <select
           value={type}
@@ -178,7 +178,7 @@ export default function MediaLibraryPage() {
             setType(e.target.value);
             setPage(1);
           }}
-          className="border border-gray-300 rounded-md px-3 py-2"
+          className="border border-rose-200 rounded-md px-3 py-2 text-stone-900"
         >
           <option value="">All types</option>
           <option value="image">Image</option>
@@ -191,7 +191,7 @@ export default function MediaLibraryPage() {
             setCategory(e.target.value);
             setPage(1);
           }}
-          className="border border-gray-300 rounded-md px-3 py-2"
+          className="border border-rose-200 rounded-md px-3 py-2 text-stone-900"
         >
           <option value="">All categories</option>
           {categories.map((c) => (
@@ -200,7 +200,7 @@ export default function MediaLibraryPage() {
             </option>
           ))}
         </select>
-        <select value={sort} onChange={(e) => setSort(e.target.value)} className="border border-gray-300 rounded-md px-3 py-2">
+        <select value={sort} onChange={(e) => setSort(e.target.value)} className="border border-rose-200 rounded-md px-3 py-2 text-stone-900">
           <option value="date">Newest first</option>
           <option value="name">Name</option>
           <option value="size">Largest first</option>
@@ -209,8 +209,8 @@ export default function MediaLibraryPage() {
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-6">
         {items.map((item) => (
-          <div key={item._id} className="border border-gray-200 rounded-lg overflow-hidden bg-white">
-            <div className="aspect-square bg-gray-100 flex items-center justify-center">
+          <div key={item._id} className="border border-rose-100 rounded-lg overflow-hidden bg-white">
+            <div className="aspect-square bg-rose-50 flex items-center justify-center">
               {item.fileType === "image" ? (
                 <img src={item.url} alt={item.fileName} className="w-full h-full object-cover" />
               ) : (
@@ -220,21 +220,21 @@ export default function MediaLibraryPage() {
               )}
             </div>
             <div className="p-3 text-sm">
-              <p className="font-medium truncate" title={item.fileName}>
+              <p className="font-medium truncate text-stone-900" title={item.fileName}>
                 {item.fileName}
               </p>
-              <p className="text-gray-500">
+              <p className="text-stone-500">
                 {humanFileSize(item.size)} · {item.fileType}
               </p>
-              <p className="text-gray-500">{new Date(item.createdAt).toLocaleDateString()}</p>
-              {item.category?.name && <p className="text-gray-500">{item.category.name}</p>}
+              <p className="text-stone-500">{new Date(item.createdAt).toLocaleDateString()}</p>
+              {item.category?.name && <p className="text-stone-500">{item.category.name}</p>}
               {item.usedIn?.length > 0 && (
-                <p className="text-gray-400 text-xs">Used in {item.usedIn.length} place(s)</p>
+                <p className="text-stone-400 text-xs">Used in {item.usedIn.length} place(s)</p>
               )}
               <div className="flex gap-2 mt-2">
                 <button
                   onClick={() => openReplace(item._id)}
-                  className="text-xs border border-gray-300 rounded px-2 py-1 hover:bg-gray-50"
+                  className="text-xs border border-rose-200 text-stone-700 rounded px-2 py-1 hover:bg-rose-50"
                 >
                   Replace
                 </button>
@@ -250,23 +250,23 @@ export default function MediaLibraryPage() {
         ))}
       </div>
 
-      {items.length === 0 && <p className="text-gray-500 text-center py-8">No media yet.</p>}
+      {items.length === 0 && <p className="text-stone-500 text-center py-8">No media yet.</p>}
 
       <div className="flex items-center justify-center gap-4">
         <button
           disabled={page <= 1}
           onClick={() => setPage((p) => Math.max(1, p - 1))}
-          className="border border-gray-300 rounded-md px-3 py-1 disabled:opacity-40"
+          className="border border-rose-200 text-stone-700 rounded-md px-3 py-1 disabled:opacity-40"
         >
           Prev
         </button>
-        <span className="text-sm text-gray-600">
+        <span className="text-sm text-stone-600">
           Page {pagination.page} of {pagination.totalPages || 1}
         </span>
         <button
           disabled={page >= pagination.totalPages}
           onClick={() => setPage((p) => p + 1)}
-          className="border border-gray-300 rounded-md px-3 py-1 disabled:opacity-40"
+          className="border border-rose-200 text-stone-700 rounded-md px-3 py-1 disabled:opacity-40"
         >
           Next
         </button>

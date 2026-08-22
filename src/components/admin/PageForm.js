@@ -79,22 +79,22 @@ export default function PageForm({ initialPage }) {
       {error && <p className="text-red-600 text-sm mb-4">{error}</p>}
 
       <label className="block mb-4">
-        <span className="block text-sm font-medium mb-1">Title</span>
+        <span className="block text-sm font-medium mb-1 text-stone-700">Title</span>
         <input
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full border border-gray-300 rounded-md px-3 py-2"
+          className="w-full border border-rose-200 rounded-md px-3 py-2 text-stone-900 focus:outline-none focus:ring-2 focus:ring-rose-400"
         />
       </label>
 
       <div className="mb-4">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-sm font-medium">Sections</span>
+          <span className="text-sm font-medium text-stone-700">Sections</span>
           <button
             type="button"
             onClick={addSection}
-            className="text-sm border border-gray-300 rounded px-3 py-1 hover:bg-gray-50"
+            className="text-sm border border-rose-200 text-stone-700 rounded px-3 py-1 hover:bg-rose-50"
           >
             + Add section
           </button>
@@ -102,9 +102,9 @@ export default function PageForm({ initialPage }) {
 
         <div className="space-y-4">
           {sections.map((section, index) => (
-            <div key={index} className="border border-gray-200 rounded-md p-4">
+            <div key={index} className="border border-rose-100 rounded-md p-4">
               <div className="flex justify-between items-center mb-2">
-                <span className="text-xs text-gray-500">Section {index + 1}</span>
+                <span className="text-xs text-stone-500">Section {index + 1}</span>
                 {sections.length > 1 && (
                   <button
                     type="button"
@@ -121,14 +121,14 @@ export default function PageForm({ initialPage }) {
                 placeholder="Heading"
                 value={section.heading || ""}
                 onChange={(e) => updateSection(index, { heading: e.target.value })}
-                className="w-full border border-gray-300 rounded-md px-3 py-2 mb-2"
+                className="w-full border border-rose-200 rounded-md px-3 py-2 mb-2 text-stone-900 focus:outline-none focus:ring-2 focus:ring-rose-400"
               />
               <textarea
                 placeholder="Body"
                 value={section.body || ""}
                 onChange={(e) => updateSection(index, { body: e.target.value })}
                 rows={3}
-                className="w-full border border-gray-300 rounded-md px-3 py-2 mb-2"
+                className="w-full border border-rose-200 rounded-md px-3 py-2 mb-2 text-stone-900 focus:outline-none focus:ring-2 focus:ring-rose-400"
               />
 
               {section.image ? (
@@ -136,12 +136,12 @@ export default function PageForm({ initialPage }) {
                   <img
                     src={section.image.url}
                     alt=""
-                    className="w-16 h-16 object-cover rounded-md border border-gray-200"
+                    className="w-16 h-16 object-cover rounded-md border border-rose-100"
                   />
                   <button
                     type="button"
                     onClick={() => setPickerIndex(index)}
-                    className="text-sm border border-gray-300 rounded px-3 py-1.5 hover:bg-gray-50"
+                    className="text-sm border border-rose-200 text-stone-700 rounded px-3 py-1.5 hover:bg-rose-50"
                   >
                     Change
                   </button>
@@ -157,7 +157,7 @@ export default function PageForm({ initialPage }) {
                 <button
                   type="button"
                   onClick={() => setPickerIndex(index)}
-                  className="text-sm border border-gray-300 rounded px-3 py-1.5 hover:bg-gray-50"
+                  className="text-sm border border-rose-200 text-stone-700 rounded px-3 py-1.5 hover:bg-rose-50"
                 >
                   Choose image
                 </button>
@@ -168,8 +168,8 @@ export default function PageForm({ initialPage }) {
       </div>
 
       <label className="flex items-center gap-2 mb-6">
-        <span className="text-sm font-medium">Status</span>
-        <select value={status} onChange={(e) => setStatus(e.target.value)} className="border border-gray-300 rounded-md px-3 py-1.5">
+        <span className="text-sm font-medium text-stone-700">Status</span>
+        <select value={status} onChange={(e) => setStatus(e.target.value)} className="border border-rose-200 rounded-md px-3 py-1.5 text-stone-900">
           <option value="draft">Draft</option>
           <option value="published">Published</option>
         </select>
@@ -178,7 +178,7 @@ export default function PageForm({ initialPage }) {
       <button
         type="submit"
         disabled={saving}
-        className="bg-black text-white px-5 py-2 rounded-md hover:bg-gray-800 disabled:opacity-50"
+        className="bg-rose-600 text-white px-5 py-2 rounded-md hover:bg-rose-700 transition disabled:opacity-50"
       >
         {saving ? "Saving..." : isEdit ? "Save changes" : "Create page"}
       </button>

@@ -28,39 +28,39 @@ export default async function HomePage() {
   return (
     <div>
       <section className="max-w-5xl mx-auto px-6 py-20 text-center">
-        <h1 className="text-4xl font-semibold mb-4">Sweet Crumb Bakery</h1>
-        <p className="text-lg text-gray-600 max-w-xl mx-auto mb-8">
+        <h1 className="text-4xl font-semibold mb-4 text-stone-900">Sweet Crumb Bakery</h1>
+        <p className="text-lg text-stone-600 max-w-xl mx-auto mb-8">
           Handmade bread, pastries, and cakes baked fresh every morning.
         </p>
-        <Link href="/menu" className="inline-block bg-black text-white px-6 py-3 rounded-md hover:bg-gray-800">
+        <Link href="/menu" className="inline-block bg-rose-600 text-white px-6 py-3 rounded-md hover:bg-rose-700 transition">
           View our menu
         </Link>
       </section>
 
       <section className="max-w-5xl mx-auto px-6 py-12 grid sm:grid-cols-3 gap-6">
         {HIGHLIGHTS.map((h) => (
-          <div key={h.title} className="bg-white border border-gray-200 rounded-lg p-6">
-            <h2 className="font-semibold mb-2">{h.title}</h2>
-            <p className="text-gray-600 text-sm">{h.body}</p>
+          <div key={h.title} className="bg-white border border-rose-100 rounded-lg p-6 shadow-sm">
+            <h2 className="font-semibold mb-2 text-emerald-700">{h.title}</h2>
+            <p className="text-stone-600 text-sm">{h.body}</p>
           </div>
         ))}
       </section>
 
       {posts.length > 0 && (
         <section className="max-w-5xl mx-auto px-6 py-12">
-          <h2 className="text-2xl font-semibold mb-6">From the blog</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-stone-900">From the blog</h2>
           <div className="grid sm:grid-cols-3 gap-6">
             {posts.map((post) => (
               <Link
                 key={String(post._id)}
                 href={`/blog/${post.slug}`}
-                className="block bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition"
+                className="block bg-white border border-rose-100 rounded-lg overflow-hidden hover:shadow-md transition"
               >
                 {post.coverImage?.url && (
                   <img src={post.coverImage.url} alt={post.title} className="w-full aspect-video object-cover" />
                 )}
                 <div className="p-4">
-                  <h3 className="font-medium">{post.title}</h3>
+                  <h3 className="font-medium text-stone-900">{post.title}</h3>
                 </div>
               </Link>
             ))}

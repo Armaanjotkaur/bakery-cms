@@ -3,7 +3,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1c1917;
 }
 
 @theme inline {
@@ -13,12 +13,10 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* This app's layouts (light cards on light backgrounds) aren't designed for
+   a dark theme, so we intentionally don't follow prefers-color-scheme here —
+   flipping --foreground to a light color would make unstyled text invisible
+   against the still-light backgrounds. */
 
 body {
   background: var(--background);

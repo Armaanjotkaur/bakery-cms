@@ -24,8 +24,8 @@ export default async function BlogPostPage({ params }) {
 
   return (
     <article className="max-w-3xl mx-auto px-6 py-16">
-      <h1 className="text-3xl font-semibold mb-2">{post.title}</h1>
-      <p className="text-sm text-gray-500 mb-6">{new Date(post.publishedAt).toLocaleDateString()}</p>
+      <h1 className="text-3xl font-semibold mb-2 text-stone-900">{post.title}</h1>
+      <p className="text-sm text-stone-500 mb-6">{new Date(post.publishedAt).toLocaleDateString()}</p>
       {post.coverImage?.url && (
         <img src={post.coverImage.url} alt={post.title} className="w-full rounded-lg mb-8" />
       )}

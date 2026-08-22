@@ -24,7 +24,7 @@ export default function MarkReadButton({ id, isRead }) {
       type="button"
       onClick={handleToggle}
       disabled={loading}
-      className="text-xs border border-gray-300 rounded px-2 py-1 hover:bg-gray-50 disabled:opacity-50"
+      className="text-xs border border-rose-200 text-stone-700 rounded px-2 py-1 hover:bg-rose-50 disabled:opacity-50"
     >
       {loading ? "..." : isRead ? "Mark unread" : "Mark read"}
     </button>

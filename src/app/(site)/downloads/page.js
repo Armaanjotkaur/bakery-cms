@@ -26,20 +26,20 @@ export default async function DownloadsPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-16">
-      <h1 className="text-3xl font-semibold mb-8">Downloads</h1>
+      <h1 className="text-3xl font-semibold mb-8 text-stone-900">Downloads</h1>
       {items.length === 0 && (
-        <p className="text-gray-500">
+        <p className="text-stone-500">
           No downloads yet. Add files to a &quot;Brochures&quot; or &quot;Reports&quot; category in the admin panel.
         </p>
       )}
-      <ul className="divide-y divide-gray-200 bg-white border border-gray-200 rounded-lg">
+      <ul className="divide-y divide-rose-100 bg-white border border-rose-100 rounded-lg">
         {items.map((item) => (
           <li key={String(item._id)} className="flex items-center justify-between px-4 py-3">
             <div>
-              <p className="font-medium">{item.fileName}</p>
-              <p className="text-xs text-gray-500">{humanFileSize(item.size)}</p>
+              <p className="font-medium text-stone-900">{item.fileName}</p>
+              <p className="text-xs text-stone-500">{humanFileSize(item.size)}</p>
             </div>
-            <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-sm text-black underline">
+            <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-sm text-rose-600 hover:text-rose-700 underline">
               Download
             </a>
           </li>

@@ -18,9 +18,9 @@ export default async function GalleryPage() {
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-16">
-      <h1 className="text-3xl font-semibold mb-8">Gallery</h1>
+      <h1 className="text-3xl font-semibold mb-8 text-stone-900">Gallery</h1>
       {items.length === 0 && (
-        <p className="text-gray-500">
+        <p className="text-stone-500">
           No photos yet. Add images to a &quot;Gallery&quot; category in the admin panel to show them here.
         </p>
       )}
@@ -30,7 +30,7 @@ export default async function GalleryPage() {
             key={String(item._id)}
             src={item.url}
             alt={item.fileName}
-            className="w-full aspect-square object-cover rounded-lg"
+            className="w-full aspect-square object-cover rounded-lg shadow-sm ring-1 ring-rose-100"
           />
         ))}
       </div>

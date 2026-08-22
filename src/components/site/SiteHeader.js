@@ -11,14 +11,14 @@ const NAV_LINKS = [
 
 export default function SiteHeader() {
   return (
-    <header className="border-b border-gray-200 bg-white">
+    <header className="border-b border-rose-100 bg-white">
       <nav className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="text-lg font-semibold">
+        <Link href="/" className="text-lg font-semibold text-rose-700">
           Sweet Crumb Bakery
         </Link>
         <div className="flex gap-5 text-sm">
           {NAV_LINKS.map((link) => (
-            <Link key={link.href} href={link.href} className="text-gray-600 hover:text-black">
+            <Link key={link.href} href={link.href} className="text-stone-600 hover:text-rose-600">
               {link.label}
             </Link>
           ))}

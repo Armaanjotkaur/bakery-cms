@@ -14,7 +14,7 @@ export default async function EditPagePage({ params }) {
 
   return (
     <main className="p-8 max-w-5xl mx-auto">
-      <h1 className="text-2xl font-semibold mb-6">Edit Page</h1>
+      <h1 className="text-2xl font-semibold mb-6 text-stone-900">Edit Page</h1>
       <PageForm initialPage={initialPage} />
     </main>
   );

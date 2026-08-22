@@ -67,24 +67,24 @@ export default function PostForm({ initialPost }) {
       {error && <p className="text-red-600 text-sm mb-4">{error}</p>}
 
       <label className="block mb-4">
-        <span className="block text-sm font-medium mb-1">Title</span>
+        <span className="block text-sm font-medium mb-1 text-stone-700">Title</span>
         <input
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full border border-gray-300 rounded-md px-3 py-2"
+          className="w-full border border-rose-200 rounded-md px-3 py-2 text-stone-900 focus:outline-none focus:ring-2 focus:ring-rose-400"
         />
       </label>
 
       <div className="mb-4">
-        <span className="block text-sm font-medium mb-1">Cover image</span>
+        <span className="block text-sm font-medium mb-1 text-stone-700">Cover image</span>
         {coverImage ? (
           <div className="flex items-center gap-3">
-            <img src={coverImage.url} alt="" className="w-20 h-20 object-cover rounded-md border border-gray-200" />
+            <img src={coverImage.url} alt="" className="w-20 h-20 object-cover rounded-md border border-rose-100" />
             <button
               type="button"
               onClick={() => setPickerOpen(true)}
-              className="text-sm border border-gray-300 rounded px-3 py-1.5 hover:bg-gray-50"
+              className="text-sm border border-rose-200 text-stone-700 rounded px-3 py-1.5 hover:bg-rose-50"
             >
               Change
             </button>
@@ -96,7 +96,7 @@ export default function PostForm({ initialPost }) {
           <button
             type="button"
             onClick={() => setPickerOpen(true)}
-            className="text-sm border border-gray-300 rounded px-3 py-1.5 hover:bg-gray-50"
+            className="text-sm border border-rose-200 text-stone-700 rounded px-3 py-1.5 hover:bg-rose-50"
           >
             Choose image
           </button>
@@ -104,16 +104,16 @@ export default function PostForm({ initialPost }) {
       </div>
 
       <div className="mb-4">
-        <span className="block text-sm font-medium mb-1">Content</span>
-        <div className="border border-gray-300 rounded-md">
+        <span className="block text-sm font-medium mb-1 text-stone-700">Content</span>
+        <div className="border border-rose-200 rounded-md">
           <EditorToolbar editor={editor} />
-          <EditorContent editor={editor} className="prose max-w-none p-3 min-h-[240px] focus:outline-none" />
+          <EditorContent editor={editor} className="prose max-w-none p-3 min-h-[240px] text-stone-900 focus:outline-none" />
         </div>
       </div>
 
       <label className="flex items-center gap-2 mb-6">
-        <span className="text-sm font-medium">Status</span>
-        <select value={status} onChange={(e) => setStatus(e.target.value)} className="border border-gray-300 rounded-md px-3 py-1.5">
+        <span className="text-sm font-medium text-stone-700">Status</span>
+        <select value={status} onChange={(e) => setStatus(e.target.value)} className="border border-rose-200 rounded-md px-3 py-1.5 text-stone-900">
           <option value="draft">Draft</option>
           <option value="published">Published</option>
         </select>
@@ -122,7 +122,7 @@ export default function PostForm({ initialPost }) {
       <button
         type="submit"
         disabled={saving}
-        className="bg-black text-white px-5 py-2 rounded-md hover:bg-gray-800 disabled:opacity-50"
+        className="bg-rose-600 text-white px-5 py-2 rounded-md hover:bg-rose-700 transition disabled:opacity-50"
       >
         {saving ? "Saving..." : isEdit ? "Save changes" : "Create post"}
       </button>
@@ -134,10 +134,10 @@ export default function PostForm({ initialPost }) {
 
 function EditorToolbar({ editor }) {
   if (!editor) return null;
-  const btn = "px-2 py-1 text-sm rounded hover:bg-gray-100";
-  const active = "bg-gray-200";
+  const btn = "px-2 py-1 text-sm rounded hover:bg-rose-50 text-stone-700";
+  const active = "bg-rose-100 text-rose-700";
   return (
-    <div className="flex gap-1 border-b border-gray-200 p-2">
+    <div className="flex gap-1 border-b border-rose-100 p-2">
       <button
         type="button"
         onClick={() => editor.chain().focus().toggleBold().run()}

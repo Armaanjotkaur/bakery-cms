@@ -61,42 +61,42 @@ export default function ContactForm() {
       {error && <p className="text-red-600 text-sm">{error}</p>}
 
       <label className="block">
-        <span className="block text-sm font-medium mb-1">Name</span>
+        <span className="block text-sm font-medium mb-1 text-stone-700">Name</span>
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          className="w-full border border-gray-300 rounded-md px-3 py-2"
+          className="w-full border border-rose-200 rounded-md px-3 py-2 text-stone-900 focus:outline-none focus:ring-2 focus:ring-rose-400"
         />
       </label>
 
       <label className="block">
-        <span className="block text-sm font-medium mb-1">Email</span>
+        <span className="block text-sm font-medium mb-1 text-stone-700">Email</span>
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="w-full border border-gray-300 rounded-md px-3 py-2"
+          className="w-full border border-rose-200 rounded-md px-3 py-2 text-stone-900 focus:outline-none focus:ring-2 focus:ring-rose-400"
         />
       </label>
 
       <label className="block">
-        <span className="block text-sm font-medium mb-1">Message</span>
+        <span className="block text-sm font-medium mb-1 text-stone-700">Message</span>
         <textarea
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           required
           rows={5}
-          className="w-full border border-gray-300 rounded-md px-3 py-2"
+          className="w-full border border-rose-200 rounded-md px-3 py-2 text-stone-900 focus:outline-none focus:ring-2 focus:ring-rose-400"
         />
       </label>
 
       <button
         type="submit"
         disabled={sending}
-        className="bg-black text-white px-5 py-2 rounded-md hover:bg-gray-800 disabled:opacity-50"
+        className="bg-rose-600 text-white px-5 py-2 rounded-md hover:bg-rose-700 transition disabled:opacity-50"
       >
         {sending ? "Sending..." : "Send message"}
       </button>

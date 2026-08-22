@@ -61,46 +61,46 @@ export default function ServiceForm({ initialService }) {
       {error && <p className="text-red-600 text-sm mb-4">{error}</p>}
 
       <label className="block mb-4">
-        <span className="block text-sm font-medium mb-1">Title</span>
+        <span className="block text-sm font-medium mb-1 text-stone-700">Title</span>
         <input
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full border border-gray-300 rounded-md px-3 py-2"
+          className="w-full border border-rose-200 rounded-md px-3 py-2 text-stone-900 focus:outline-none focus:ring-2 focus:ring-rose-400"
         />
       </label>
 
       <label className="block mb-4">
-        <span className="block text-sm font-medium mb-1">Description</span>
+        <span className="block text-sm font-medium mb-1 text-stone-700">Description</span>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           rows={4}
-          className="w-full border border-gray-300 rounded-md px-3 py-2"
+          className="w-full border border-rose-200 rounded-md px-3 py-2 text-stone-900 focus:outline-none focus:ring-2 focus:ring-rose-400"
         />
       </label>
 
       <label className="block mb-4">
-        <span className="block text-sm font-medium mb-1">Price</span>
+        <span className="block text-sm font-medium mb-1 text-stone-700">Price</span>
         <input
           type="number"
           step="0.01"
           min="0"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
-          className="w-full border border-gray-300 rounded-md px-3 py-2"
+          className="w-full border border-rose-200 rounded-md px-3 py-2 text-stone-900 focus:outline-none focus:ring-2 focus:ring-rose-400"
         />
       </label>
 
       <div className="mb-4">
-        <span className="block text-sm font-medium mb-1">Image</span>
+        <span className="block text-sm font-medium mb-1 text-stone-700">Image</span>
         {image ? (
           <div className="flex items-center gap-3">
-            <img src={image.url} alt="" className="w-20 h-20 object-cover rounded-md border border-gray-200" />
+            <img src={image.url} alt="" className="w-20 h-20 object-cover rounded-md border border-rose-100" />
             <button
               type="button"
               onClick={() => setPickerOpen(true)}
-              className="text-sm border border-gray-300 rounded px-3 py-1.5 hover:bg-gray-50"
+              className="text-sm border border-rose-200 text-stone-700 rounded px-3 py-1.5 hover:bg-rose-50"
             >
               Change
             </button>
@@ -112,7 +112,7 @@ export default function ServiceForm({ initialService }) {
           <button
             type="button"
             onClick={() => setPickerOpen(true)}
-            className="text-sm border border-gray-300 rounded px-3 py-1.5 hover:bg-gray-50"
+            className="text-sm border border-rose-200 text-stone-700 rounded px-3 py-1.5 hover:bg-rose-50"
           >
             Choose image
           </button>
@@ -120,8 +120,8 @@ export default function ServiceForm({ initialService }) {
       </div>
 
       <label className="flex items-center gap-2 mb-6">
-        <span className="text-sm font-medium">Status</span>
-        <select value={status} onChange={(e) => setStatus(e.target.value)} className="border border-gray-300 rounded-md px-3 py-1.5">
+        <span className="text-sm font-medium text-stone-700">Status</span>
+        <select value={status} onChange={(e) => setStatus(e.target.value)} className="border border-rose-200 rounded-md px-3 py-1.5 text-stone-900">
           <option value="draft">Draft</option>
           <option value="published">Published</option>
         </select>
@@ -130,7 +130,7 @@ export default function ServiceForm({ initialService }) {
       <button
         type="submit"
         disabled={saving}
-        className="bg-black text-white px-5 py-2 rounded-md hover:bg-gray-800 disabled:opacity-50"
+        className="bg-rose-600 text-white px-5 py-2 rounded-md hover:bg-rose-700 transition disabled:opacity-50"
       >
         {saving ? "Saving..." : isEdit ? "Save changes" : "Create service"}
       </button>

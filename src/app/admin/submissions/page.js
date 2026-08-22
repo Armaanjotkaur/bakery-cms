@@ -9,10 +9,10 @@ export default async function SubmissionsPage() {
 
   return (
     <main className="p-8 max-w-5xl mx-auto">
-      <h1 className="text-2xl font-semibold mb-6">Submissions</h1>
+      <h1 className="text-2xl font-semibold mb-6 text-stone-900">Submissions</h1>
 
-      <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
-        <thead className="bg-gray-50 text-left">
+      <table className="w-full text-sm border border-rose-100 rounded-lg overflow-hidden">
+        <thead className="bg-rose-50/60 text-left text-stone-700">
           <tr>
             <th className="p-3">From</th>
             <th className="p-3">Message</th>
@@ -24,16 +24,16 @@ export default async function SubmissionsPage() {
           {submissions.map((s) => (
             <tr
               key={String(s._id)}
-              className={`border-t border-gray-100 ${!s.isRead ? "font-semibold bg-amber-50" : ""}`}
+              className={`border-t border-rose-50 text-stone-900 ${!s.isRead ? "font-semibold bg-amber-50" : ""}`}
             >
               <td className="p-3">
                 <p>{s.name}</p>
-                <p className="text-xs text-gray-500">{s.email}</p>
+                <p className="text-xs text-stone-500 font-normal">{s.email}</p>
               </td>
-              <td className="p-3 max-w-sm truncate" title={s.message}>
+              <td className="p-3 max-w-sm truncate font-normal" title={s.message}>
                 {s.message}
               </td>
-              <td className="p-3 text-gray-500">{new Date(s.createdAt).toLocaleDateString()}</td>
+              <td className="p-3 text-stone-500 font-normal">{new Date(s.createdAt).toLocaleDateString()}</td>
               <td className="p-3">
                 <div className="flex gap-2">
                   <MarkReadButton id={String(s._id)} isRead={s.isRead} />
@@ -45,7 +45,7 @@ export default async function SubmissionsPage() {
         </tbody>
       </table>
 
-      {submissions.length === 0 && <p className="text-gray-500 text-center py-8">No submissions yet.</p>}
+      {submissions.length === 0 && <p className="text-stone-500 text-center py-8">No submissions yet.</p>}
     </main>
   );
 }
