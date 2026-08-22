@@ -8,6 +8,7 @@ const mediaSchema = new mongoose.Schema(
     size: { type: Number, required: true },
     url: { type: String, required: true },
     publicId: { type: String, required: true }, // Cloudinary public_id, needed for delete/replace
+    resourceType: { type: String, required: true }, // Cloudinary resource_type ("image" | "raw"), needed to destroy the right asset
     hash: { type: String, required: true, index: true }, // md5, for duplicate detection
     category: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
     uploadedAt: { type: Date, default: Date.now },
