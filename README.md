@@ -52,8 +52,9 @@ GITHUB_CLIENT_SECRET=...
 
 OAuth callback URLs to register with each provider:
 
-- Google: `http://localhost:3000/api/auth/google/callback` (dev) and `https://<your-domain>/api/auth/google/callback` (prod)
-- GitHub: `http://localhost:3000/api/auth/github/callback` (dev) and `https://<your-domain>/api/auth/github/callback` (prod)
+- Google: `http://localhost:3000/api/auth/google/callback` (dev) and `https://bakery-cms-iota.vercel.app/api/auth/google/callback` (prod)
+
+- GitHub: `http://localhost:3000/api/auth/github/callback` (dev) and `https://bakery-cms-iota.vercel.app/api/auth/github/callback` (prod)
 
 ### 4. Run
 
@@ -65,6 +66,32 @@ npm run build && npm run start   # production build
 ### 5. Log in as admin
 
 Visit `/login` and sign in with Google or GitHub, using the email set as `ADMIN_EMAIL`. Any other account is rejected.
+
+## Deployment
+
+The application is deployed on Vercel.
+
+- **Live Website:** https://bakery-cms-iota.vercel.app
+- **GitHub Repository:** https://github.com/Armaanjotkaur/bakery-cms
+
+Production OAuth callback URLs:
+
+- Google: `https://bakery-cms-iota.vercel.app/api/auth/google/callback`
+- GitHub: `https://bakery-cms-iota.vercel.app/api/auth/github/callback`
+
+Production testing completed successfully for:
+
+- Google OAuth login
+- GitHub OAuth login
+- Admin authentication and route protection
+- MongoDB Atlas connection
+- Cloudinary media upload and deletion
+- Posts, services and pages
+- Categories
+- Contact form and submissions
+- Downloads
+- Public website pages
+- Logout
 
 ## Folder structure
 
